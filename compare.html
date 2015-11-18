@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>compare</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        var PI = Math.PI;
+        var a_canvas = $("#a_canvas")[0],
+                ctx = a_canvas.getContext("2d"),
+                winW = window.innerWidth,
+                winH = window.innerHeight;
+
+        a_canvas.width = winW;
+        a_canvas.height = winH;
+
+        console.log(winW,winH);
+
+        var source = new Image();
+        source.src = 'files/msk.png';
+        var dy = (source.height - winH)/2;
+        var imgWidth = winW/2;
+        var dx = (source.width - imgWidth)/2;
+        //drawImage(source, sx, sy, swidth, sheight, x, y, width, height);
+        ctx.drawImage(source,dx,dy,imgWidth,winH,0,0,imgWidth,winH);
+
+        var source2 = new Image();
+        source2.src = 'files/sim.png';
+        var dy = (source2.height - winH)/2;
+        var imgWidth = winW/2;
+        var dx = (source2.width - imgWidth)/2;
+        //drawImage(source, sx, sy, swidth, sheight, x, y, width, height);
+        ctx.drawImage(source2,dx,dy,imgWidth,winH,imgWidth+1,0,imgWidth,winH);
+
+    });
+    </script>
+    <style>
+        *{
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+<canvas id="a_canvas"></canvas>
+</body>
+</html>
